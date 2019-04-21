@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="説明文">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <title>かんちゃん公式ドキュメント</title>
+  </head>
+  <body style="padding: 1em;">
+      <div class="tile is-ancestor">
+        <div class="tile is-4 is-vertical is-parent">
+          <figure class="image is-4by3">
+            <img src="img/icon.jpg" alt="アイコン画像">
+          </figure>
+          <article class="tile is-child notification is-info">
+            <p class="title" id="title">かんちゃん</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-success">
+            <div class="content is-child" id="txt">
+              <p class="title">自己紹介</p>
+              <hr>
+              <p>システムエンジニア</p>
+              <p>1996-02-22</p>
+              <p>東京経済大学&nbsp;卒業</p>
+              <p>お菓子作り&nbsp;カメラ</p>
+              <p><a href="https://github.com/k-horiuchi">GitHub</a></p>
+              <p><a href="https://qiita.com/kanchan-1996">Qiita</a></p>
+            </div>
+          </article>
+        </div>
+      </div>
+        <a id="next" href="javascript:commonFanc(1);" class="button is-primary is-rounded is-pulled-right">＞</a>
+        <a id="prev" href="javascript:commonFanc(-1);" class="button is-primary is-rounded is-pulled-left" style="visibility: hidden;">＜</a>
+        <script>
+          const txt = document.getElementById('txt');
+          const title= document.getElementById('title');
+          const TitleData= [`かんちゃん`,`SKILLS`,`最後に`];
+          const TextData = [`<p class="title">自己紹介</p><hr><p>システムエンジニア</p><p>1996-02-22</p><p>東京経済大学&nbsp;卒業</p><p>お菓子作り&nbsp;カメラ</p><p><a href="https://github.com/k-horiuchi">GitHub</a></p><p><a href="https://qiita.com/kanchan-1996">Qiita</a></p>`,`<p>Since 2018.4</p><p>Java (Spring boot)</p><p>JavaScript (ECMAScript jQuery Vue.js)</p><p>PHP (Laravel)</p><p>Python</p><p>Elixir (Phoenix)</p><p>VB (.NET VBA)</p><p>SQL (OracleDB MariaDB PostgreSQL SQLite)</p><p>Linux Server (CentOS7 Apache)</p>`,`<p>目標：技術者としての成長と不幸の解決</p><p>サーバサイド、インフラの専門家を目指す</p><p>長期的な長時間残業、休出、終わりが見えないプロジェクトから抜け出したい</p><p>そのために技術を学び、効率的な手段を模索している</p>`];
+          let subscript=0;
+          const commonFanc = (num) => {
+            subscript = getSubscript(num);
+            rewriteHtml(txt,TextData[subscript]);
+            rewriteHtml(title,TitleData[subscript]);
+            document.getElementById('next').style.visibility = nextHidden(subscript);
+            document.getElementById('prev').style.visibility = prevHidden(subscript);
+          };
+          const rewriteHtml = (dom,data) => {
+            dom.innerHTML = data;
+          };
+          const getSubscript = (num) => {
+            subscript += num;
+            return subscript;
+          };
+          const nextHidden = (num) => {
+            return (num > TitleData.length-2) ? "hidden" : "visible";
+          };
+          const prevHidden = (num) => {
+            return (num == 0) ? "hidden" : "visible";
+          };
+    </script>
+  </body>
+</html>
